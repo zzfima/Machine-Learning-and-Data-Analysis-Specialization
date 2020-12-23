@@ -16,11 +16,15 @@ y = map(f, x)
 pylab.plot(x, list(y))
 pylab.show()
 
-# Polinomial defenition:
+# Polynomial definition:
 # f(x) = W0 + (W1 * x^1) + (W2 * x^2) +...+(Wn * x^n)
 # First degree polynomials (linear polynomial):
 # f(x) = W0 + W1 * x
 # Create linear polynomial, which based on values in x = 1 and x = 15
+# Current example:
+# f(x1) = W0 + W1 * x1 =>  f_1 = W0 + W1
+# f(x2) = W0 + W1 * x2 => f_15 = W0 + W1 * 15
+# So, there 2 equations with 2 unknowns => can be resolved
 f_1 = f(1)
 f_15 = f(15)
 x = np.array([[1, 1], [1, 15]])
