@@ -50,15 +50,38 @@ def func_polynomial_n_2(var_x):
     return w_2[0] + w_2[1] * var_x + w_2[2] * math.pow(var_x, 2)
 
 
-# Show on graph f, n=1, n=2
+# calculate polynomial n=3
+# Form:
+# f(x) = W0 + W1 * x + W2 * x^2 + W3 * x^3
+# Do it for x = 1, 4, 10, 15
+
+f_1 = f(1)
+f_4 = f(4)
+f_10 = f(10)
+f_15 = f(15)
+
+x = np.array([[1, 1, 1, 1], [1, 4, 16, 64], [1, 10, 100, 1000], [1, 15, 225, 3375]])
+y = np.array([f_1, f_4, f_10, f_15])
+w_3 = solve(x, y)
+
+
+def func_polynomial_n_3(var_x):
+    return w_3[0] + var_x * w_3[1] + math.pow(var_x, 2) * w_3[2] + math.pow(var_x, 3) * w_3[3]
+
+
+# Show on graph f, n=1, n=2, n=3
 x = np.arange(16)
-y = map(func_polynomial_n_2, x)
+
+y = map(f, x)
 pylab.plot(x, list(y))
 
 y = map(func_polynomial_n_1, x)
 pylab.plot(x, list(y))
 
-y = map(f, x)
+y = map(func_polynomial_n_2, x)
+pylab.plot(x, list(y))
+
+y = map(func_polynomial_n_3, x)
 pylab.plot(x, list(y))
 
 pylab.show()
