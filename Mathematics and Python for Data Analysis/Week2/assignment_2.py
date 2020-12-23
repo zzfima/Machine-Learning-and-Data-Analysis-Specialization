@@ -31,16 +31,21 @@ x = np.array([[1, 1], [1, 15]])
 b = np.array([f_1, f_15])
 w = solve(x, b)
 
+
+def func_polynomial(x):
+    return w[0] + w[1] * x
+
+
 # show it on graph
-f_pol = lambda x: w[0] + w[1] * x
 x = np.arange(16)
-y = map(f_pol, x)
+y = map(func_polynomial, x)
 pylab.plot(x, list(y))
 pylab.show()
 
-# show together : Investigation function and polynomial
+# show together : Investigation function and polynomial.
+# there no too much correlation
 x = np.arange(16)
-y = map(f_pol, x)
+y = map(func_polynomial, x)
 pylab.plot(x, list(y))
 y = map(f, x)
 pylab.plot(x, list(y))
