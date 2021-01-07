@@ -82,7 +82,7 @@ def normal_equation(x, y):
 # testing normal_equation
 # the weights very similar to correlation matrix!
 feat_matrix = advertising_data_frame[['TV', 'Radio', 'Newspaper', 'bias']].values
-target_matrix = advertising_data_frame[['Sales']].values
+target_matrix = advertising_data_frame.Sales
 norm_eq_weights = normal_equation(feat_matrix, target_matrix)
 print(norm_eq_weights, '\n')
 
