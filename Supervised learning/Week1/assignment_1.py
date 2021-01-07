@@ -54,7 +54,7 @@ def mean_square_error(y_true, y_predicted):
     :param y_predicted: predicted result
     :return:
     """
-    return ((y_true - y_predicted) ** 2).sum() / len(y_true)
+    return ((y_true - y_predicted) ** 2).sum() / len(y_predicted)
 
 
 # Short way:
@@ -65,3 +65,7 @@ def mean_square_error(y_true, y_predicted):
 print(mean_square_error(np.array([1, 1, 1]), np.array([1, 1, 1])))
 print(mean_square_error(np.array([1, 1, 1]), np.array([1.1, 1.1, 1.1])))
 print(mean_square_error(np.array([1, 1, 1]), np.array([2, 2, 2])))
+
+# Calculate mean square error of Sales against median Sales
+sales_median = advertising_data_frame.Sales.median()
+print(mean_square_error(sales_median, advertising_data_frame.Sales))
