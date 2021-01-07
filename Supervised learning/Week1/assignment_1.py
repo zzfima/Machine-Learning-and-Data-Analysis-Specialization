@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 advertising_data_frame = pd.read_csv('advertising.csv')
@@ -36,4 +37,25 @@ for column in advertising_data_frame:  # iterate each column
 print('\n')
 
 # Display first 5 rows
-print(advertising_data_frame.head(), '\n')
+print(advertising_data_frame.head(2), '\n')
+
+# add column of ones as w0
+advertising_data_frame['bias'] = 1
+print(advertising_data_frame.head(2), '\n')
+
+
+# realisation function 'mean_square_error': mean square error: sum((y[i] - y_predicted[i])^2) / n
+def mean_square_error(y_true, y_predicted):
+    """
+    Calculate mean square error
+    :param y_true: real result
+    :param y_predicted: predicted result
+    :return:
+    """
+    return ((y_true - y_predicted) ** 2).sum() / len(y_true)
+
+
+# Test mean_square_error
+print(mean_square_error(np.array([1, 1, 1]), np.array([1, 1, 1])))
+print(mean_square_error(np.array([1, 1, 1]), np.array([1.1, 1.1, 1.1])))
+print(mean_square_error(np.array([1, 1, 1]), np.array([2, 2, 2])))
