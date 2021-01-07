@@ -1,4 +1,6 @@
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 advertising_data_frame = pd.read_csv('advertising.csv')
 
