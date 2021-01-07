@@ -64,8 +64,34 @@ def mean_square_error(y_true, y_predicted):
 # Test mean_square_error
 print(mean_square_error(np.array([1, 1, 1]), np.array([1, 1, 1])))
 print(mean_square_error(np.array([1, 1, 1]), np.array([1.1, 1.1, 1.1])))
-print(mean_square_error(np.array([1, 1, 1]), np.array([2, 2, 2])))
+print(mean_square_error(np.array([1, 1, 1]), np.array([2, 2, 2])), '\n')
 
 # Calculate mean square error of Sales against median Sales
 sales_median = advertising_data_frame.Sales.median()
-print(mean_square_error(sales_median, advertising_data_frame.Sales))
+print('Sales median: ', sales_median, ', Sales mean_square_error : ',
+      mean_square_error(sales_median, advertising_data_frame.Sales), '\n')
+
+
+# realization of normal_equation function, which calculates weights X * w = y
+def normal_equation(x, y):
+    a = np.dot(x.T, x)
+    b = np.dot(x.T, y)
+    return np.linalg.solve(a, b)
+
+
+# testing normal_equation
+# the weights very similar to correlation matrix!
+feat_matrix = advertising_data_frame[['TV', 'Radio', 'Newspaper', 'bias']].values
+target_matrix = advertising_data_frame[['Sales']].values
+norm_eq_weights = normal_equation(feat_matrix, target_matrix)
+print(norm_eq_weights, '\n')
+
+
+# realization of function wich calculate prediction from features and weights
+def linear_prediction(X, w):
+    return np.dot(X, w)
+
+
+# lets see prediction and calculate error
+y_pred = linear_prediction(feat_matrix, norm_eq_weights)
+print(mean_square_error(target_matrix, y_pred))
