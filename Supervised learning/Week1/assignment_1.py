@@ -31,6 +31,7 @@ for column in advertising_data_frame:  # iterate each column
     advertising_data_frame[column] = (advertising_data_frame[column] - mean) / std  # normalize each value in column
 
 # short way:
+# from sklearn.preprocessing import StandardScaler
 # scaler = StandardScaler()
 # print(pd.DataFrame(scaler.fit_transform(advertising_data_frame), columns=advertising_data_frame.columns).head())
 
@@ -45,6 +46,7 @@ print(advertising_data_frame.head(2), '\n')
 
 
 # realisation function 'mean_square_error': mean square error: sum((y[i] - y_predicted[i])^2) / n
+# Long way:
 def mean_square_error(y_true, y_predicted):
     """
     Calculate mean square error
@@ -54,6 +56,10 @@ def mean_square_error(y_true, y_predicted):
     """
     return ((y_true - y_predicted) ** 2).sum() / len(y_true)
 
+
+# Short way:
+# from sklearn.metrics import mean_squared_error
+# print(mean_squared_error(np.array([1, 1, 1]), np.array([1, 1, 1])))
 
 # Test mean_square_error
 print(mean_square_error(np.array([1, 1, 1]), np.array([1, 1, 1])))
