@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 advertising_data_frame = pd.read_csv('advertising.csv')
 
@@ -13,8 +15,8 @@ print(advertising_data_frame.shape, '\n')
 print(advertising_data_frame.describe(), '\n')
 
 # Show pairwise relationships as graphs between DataFrame features
-# sns.pairplot(advertising_data_frame)
-# plt.show()
+sns.pairplot(advertising_data_frame)
+plt.show()
 
 # Show pairwise relationships as correlations between DataFrame features
 print(advertising_data_frame.corr(), '\n')
