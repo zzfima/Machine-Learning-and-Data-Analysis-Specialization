@@ -102,3 +102,8 @@ print('MSE of norm.eq: ', mean_square_error(target_matrix, y_pred), '\n')
 print(advertising_data_frame.TV.mean())
 print(advertising_data_frame.Radio.mean())
 print(advertising_data_frame.Newspaper.mean(), '\n')
+
+# calculate MSE in case of mean TV, Radio and Newspaper aiming to 0
+mean_values = np.array([0, 0, 0, 1]).T
+y_pred = linear_prediction(mean_values, norm_eq_weights)
+print(y_pred, '\n')
