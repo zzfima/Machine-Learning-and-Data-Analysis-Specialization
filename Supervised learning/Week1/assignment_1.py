@@ -15,8 +15,8 @@ print(advertising_data_frame.shape, '\n')
 print(advertising_data_frame.describe(), '\n')
 
 # Show pairwise relationships as graphs between DataFrame features
-sns.pairplot(advertising_data_frame)
-plt.show()
+# sns.pairplot(advertising_data_frame)
+# plt.show()
 
 # Show pairwise relationships as correlations between DataFrame features
 print(advertising_data_frame.corr(), '\n')
@@ -70,7 +70,7 @@ print(mean_square_error(np.array([1, 1, 1]), np.array([2, 2, 2])), '\n')
 
 # Calculate mean square error of Sales against median Sales
 sales_median = advertising_data_frame.Sales.median()
-print('Sales median: ', sales_median, ', Sales mean_square_error : ',
+print('Sales median: ', sales_median, ', MSE of median: ',
       mean_square_error(sales_median, advertising_data_frame.Sales), '\n')
 
 
@@ -96,4 +96,9 @@ def linear_prediction(X, w):
 
 # lets see prediction and calculate error
 y_pred = linear_prediction(feat_matrix, norm_eq_weights)
-print(mean_square_error(target_matrix, y_pred))
+print('MSE of norm.eq: ', mean_square_error(target_matrix, y_pred), '\n')
+
+# mean almost zero:
+print(advertising_data_frame.TV.mean())
+print(advertising_data_frame.Radio.mean())
+print(advertising_data_frame.Newspaper.mean(), '\n')
